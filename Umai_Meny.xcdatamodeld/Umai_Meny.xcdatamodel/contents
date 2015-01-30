@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Forratter" representedClassName="Forratter" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="forratterBundle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ForratterDetails" inverseName="forratters" inverseEntity="ForratterDetails" syncable="YES"/>
+        <relationship name="orderBasket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderBasket" inverseName="forratterOrders" inverseEntity="OrderBasket" syncable="YES"/>
+    </entity>
+    <entity name="ForratterDetails" representedClassName="ForratterDetails" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderQuantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="forratters" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Forratter" inverseName="forratterBundle" inverseEntity="Forratter" syncable="YES"/>
+    </entity>
+    <entity name="MakiMenu" representedClassName="MakiMenu" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="ingredient" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderQuantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="ordinariePrice" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="orderBasket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderBasket" inverseName="makiOrders" inverseEntity="OrderBasket" syncable="YES"/>
+    </entity>
+    <entity name="OrderBasket" representedClassName="OrderBasket" syncable="YES">
+        <relationship name="forratterOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Forratter" inverseName="orderBasket" inverseEntity="Forratter" syncable="YES"/>
+        <relationship name="makiOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MakiMenu" inverseName="orderBasket" inverseEntity="MakiMenu" syncable="YES"/>
+        <relationship name="sashimiOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sashimi" inverseName="orderBasket" inverseEntity="Sashimi" syncable="YES"/>
+        <relationship name="sushiOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sushi" inverseName="orderBasket" inverseEntity="Sushi" syncable="YES"/>
+        <relationship name="tillaggOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tillagg" inverseName="orderBasket" inverseEntity="Tillagg" syncable="YES"/>
+        <relationship name="varmrattOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varmratt" inverseName="orderBasket" inverseEntity="Varmratt" syncable="YES"/>
+    </entity>
+    <entity name="Sashimi" representedClassName="Sashimi" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="ingredient" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderQuantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="ordinariePrice" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="orderBasket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderBasket" inverseName="sashimiOrders" inverseEntity="OrderBasket" syncable="YES"/>
+    </entity>
+    <entity name="Sushi" representedClassName="Sushi" syncable="YES">
+        <attribute name="ingredient" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lunchPrice" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderQuantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="ordinariePrice" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="orderBasket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderBasket" inverseName="sushiOrders" inverseEntity="OrderBasket" syncable="YES"/>
+    </entity>
+    <entity name="Tillagg" representedClassName="Tillagg" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderQuantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="orderBasket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderBasket" inverseName="tillaggOrders" inverseEntity="OrderBasket" syncable="YES"/>
+    </entity>
+    <entity name="Varmratt" representedClassName="Varmratt" syncable="YES">
+        <attribute name="ingredient" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lunchPrice" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderQuantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="ordinariePrice" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sorting" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="orderBasket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderBasket" inverseName="varmrattOrders" inverseEntity="OrderBasket" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Forratter" positionX="52" positionY="470" width="128" height="88"/>
+        <element name="ForratterDetails" positionX="232" positionY="459" width="128" height="118"/>
+        <element name="MakiMenu" positionX="61" positionY="180" width="128" height="133"/>
+        <element name="OrderBasket" positionX="-153" positionY="-36" width="128" height="133"/>
+        <element name="Sashimi" positionX="72" positionY="27" width="128" height="133"/>
+        <element name="Sushi" positionX="88" positionY="-324" width="128" height="148"/>
+        <element name="Tillagg" positionX="54" positionY="338" width="128" height="103"/>
+        <element name="Varmratt" positionX="36" positionY="-216" width="128" height="150"/>
+    </elements>
+</model>
